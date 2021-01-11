@@ -1,0 +1,39 @@
+TextWindow.WriteLine("Color what")
+color = TextWindow.Read()
+TextWindow.WriteLine("Spiral pitch")
+spires = TextWindow.ReadNumber()
+TextWindow.WriteLine("Background Color what")
+Bgcolor = TextWindow.Read()
+
+GraphicsWindow.BackgroundColor = Bgcolor
+
+Sub Spiral
+  Turtle.PenUp()
+  Turtle.MoveTo(startX,startY)
+  Turtle.PenDown()
+  GraphicsWindow.PenColor=color
+  rotation = Math.GetRadians(rotation)
+  i=1
+  While(i<=lines)
+    
+      m=(i / lines) * radius
+
+    x = startX + Math.Cos(i * spires / lines * 2 * Math.Pi+rotation) * m
+    y = startY + Math.Sin(i*  spires / lines * 2 * Math.Pi+rotation) * m
+    Turtle.MoveTo(x,y)
+    i=i+1
+  EndWhile
+EndSub
+
+startX=Turtle.x
+startY=Turtle.y
+Turtle.speed=100
+
+radius=200
+lines=500
+rotation=0
+type="std"
+For j=0 To 270 Step 90
+  rotation=j
+  Spiral()
+EndFor
