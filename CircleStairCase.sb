@@ -1,0 +1,20 @@
+sides = 30  ' You can adjust the number of sides to create polygons resembling ellipses
+Turtle.Speed = 10
+length = 30 / sides  ' Adjust the length based on the desired size of the shape
+angle = 360 / sides
+
+For layer = 1 To 12
+  For i = 1 To layer
+    x = (12-i) * 30  
+    y = (layer) * 30
+    
+    For j = 1 To sides
+      Turtle.PenDown()
+      Turtle.Move(length)
+      Turtle.Turn(angle)
+    EndFor
+
+    Turtle.PenUp()
+    Turtle.MoveTo(x, y)  ' Move the turtle to the next position without drawing
+  EndFor
+EndFor
